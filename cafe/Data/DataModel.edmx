@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CafeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="masa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="masaadi" Type="varchar" MaxLength="50" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="satis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adet" Type="int" />
+          <Property Name="masaid" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="urunid" Type="int" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunturu" Type="varchar" MaxLength="50" />
+          <Property Name="urunadi" Type="varchar" MaxLength="50" />
+          <Property Name="stokadeti" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="fiyat" Type="money" />
+        </EntityType>
+        <EntityContainer Name="CafeDBModelStoreContainer">
+          <EntitySet Name="masa" EntityType="Self.masa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="satis" EntityType="Self.satis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CafeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="masa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="masaadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="satis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adet" Type="Int32" />
+          <Property Name="masaid" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="urunid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunturu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="urunadi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stokadeti" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="fiyat" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityContainer Name="CafeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="masa" EntityType="Self.masa" />
+          <EntitySet Name="satis" EntityType="Self.satis" />
+          <EntitySet Name="urun" EntityType="Self.urun" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CafeDBModelStoreContainer" CdmEntityContainer="CafeDBEntities">
+          <EntitySetMapping Name="masa">
+            <EntityTypeMapping TypeName="CafeDBModel.masa">
+              <MappingFragment StoreEntitySet="masa">
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="masaadi" ColumnName="masaadi" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="satis">
+            <EntityTypeMapping TypeName="CafeDBModel.satis">
+              <MappingFragment StoreEntitySet="satis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adet" ColumnName="adet" />
+                <ScalarProperty Name="masaid" ColumnName="masaid" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="urunid" ColumnName="urunid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urun">
+            <EntityTypeMapping TypeName="CafeDBModel.urun">
+              <MappingFragment StoreEntitySet="urun">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="urunturu" ColumnName="urunturu" />
+                <ScalarProperty Name="urunadi" ColumnName="urunadi" />
+                <ScalarProperty Name="stokadeti" ColumnName="stokadeti" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
